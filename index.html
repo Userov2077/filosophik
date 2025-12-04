@@ -1,0 +1,1082 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Философия религии: социальные явления и процессы</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary-color: #3a506b;
+            --secondary-color: #1c2541;
+            --accent-color: #5bc0be;
+            --light-color: #f0f7f7;
+            --dark-color: #0b132b;
+            --progressive-color: #4CAF50;
+            --regressive-color: #FF5252;
+            --philosopher-color: #9C27B0;
+        }
+        
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo i {
+            color: var(--accent-color);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 0;
+            position: relative;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--accent-color);
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 0;
+            transition: width 0.3s;
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(11, 19, 43, 0.8), rgba(11, 19, 43, 0.9)), url('https://images.unsplash.com/photo-1507608869274-d3177c8bb4c7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+            margin-top: 80px;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            animation: fadeInUp 1s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--accent-color);
+            color: var(--dark-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid var(--accent-color);
+        }
+        
+        .btn:hover {
+            background-color: transparent;
+            color: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 5rem 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            display: inline-block;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 100px;
+            height: 4px;
+            background-color: var(--accent-color);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+        
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .card-header {
+            padding: 1.5rem;
+            color: white;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .card-header.progressive {
+            background: linear-gradient(135deg, var(--progressive-color), #2E7D32);
+        }
+        
+        .card-header.regressive {
+            background: linear-gradient(135deg, var(--regressive-color), #C62828);
+        }
+        
+        .card-header.philosopher {
+            background: linear-gradient(135deg, var(--philosopher-color), #7B1FA2);
+        }
+        
+        .card-header i {
+            font-size: 1.5rem;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-content ul {
+            list-style-position: inside;
+            margin-top: 1rem;
+        }
+        
+        .card-content li {
+            margin-bottom: 0.8rem;
+            padding-left: 0.5rem;
+        }
+        
+        .philosopher-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        
+        .philosopher-detail {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .philosopher-detail i {
+            color: var(--philosopher-color);
+            margin-top: 0.2rem;
+        }
+        
+        .philosopher-quote {
+            font-style: italic;
+            padding: 1rem;
+            background-color: #f5f5f5;
+            border-left: 4px solid var(--philosopher-color);
+            margin-top: 1rem;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        /* Quote Section */
+        .quote-section {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: 15px;
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .quote-section::before {
+            content: '"';
+            position: absolute;
+            font-size: 20rem;
+            color: rgba(255, 255, 255, 0.05);
+            top: -80px;
+            left: -30px;
+            font-family: serif;
+        }
+        
+        .quote-section blockquote {
+            font-size: 1.8rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .quote-author {
+            margin-top: 1.5rem;
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 4rem auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease;
+        }
+        
+        .timeline-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+        }
+        
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .timeline-content::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            top: 15px;
+            transform: rotate(45deg);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::after {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::after {
+            left: -10px;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-dot {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-dot {
+            left: -10px;
+        }
+        
+        .timeline-year {
+            font-weight: 700;
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        
+        .footer-description {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.8;
+        }
+        
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .social-icons a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: var(--accent-color);
+        }
+        
+        .copyright {
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .cards-container {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .header-container {
+                padding: 0 1rem;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--secondary-color);
+                padding: 1rem;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.3s ease;
+            }
+            
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            nav ul {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item:nth-child(even) {
+                left: 0;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-dot,
+            .timeline-item:nth-child(even) .timeline-dot {
+                left: 21px;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-content::after,
+            .timeline-item:nth-child(even) .timeline-content::after {
+                left: -10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .card {
+                margin: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <i class="fas fa-hands-praying"></i>
+                <span>Философия религии</span>
+            </div>
+            
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="#home">Главная</a></li>
+                    <li><a href="#progressive">Прогрессивные аспекты</a></li>
+                    <li><a href="#regressive">Регрессивные аспекты</a></li>
+                    <li><a href="#philosophers">Философы</a></li>
+                    <li><a href="#history">Исторический контекст</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Философия религии и её социальные аспекты</h1>
+            <p>Исследование прогрессивных и регрессивных социальных явлений, связанных с религией в историческом и современном контекстах</p>
+            <a href="#progressive" class="btn">Исследовать аспекты <i class="fas fa-arrow-down"></i></a>
+        </div>
+    </section>
+
+    <!-- Progressive Aspects Section -->
+    <section class="container" id="progressive">
+        <div class="section-title">
+            <h2>Прогрессивные социальные явления</h2>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header progressive">
+                    <i class="fas fa-scale-balanced"></i>
+                    <h3>Этика и мораль</h3>
+                </div>
+                <div class="card-content">
+                    <p>Религия способствует утверждению этических принципов, укреплению морали и нравственности в обществе.</p>
+                    <ul>
+                        <li>Формирование моральных кодексов</li>
+                        <li>Укрепление семейных ценностей</li>
+                        <li>Развитие понятий справедливости и милосердия</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header progressive">
+                    <i class="fas fa-hands-holding-circle"></i>
+                    <h3>Социальное единство и помощь</h3>
+                </div>
+                <div class="card-content">
+                    <p>Религиозные институты играют важную роль в объединении людей и оказании социальной помощи.</p>
+                    <ul>
+                        <li>Создание приютов, больниц, благотворительных организаций</li>
+                        <li>Объединение последователей одной религии</li>
+                        <li>Политическое и социальное укрепление государства</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header progressive">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Образование и культура</h3>
+                </div>
+                <div class="card-content">
+                    <p>Религия исторически стимулировала развитие образования, философии и различных видов искусства.</p>
+                    <ul>
+                        <li>Развитие письменности и религиозной философии</li>
+                        <li>Создание школ, семинарий, университетов</li>
+                        <li>Развитие архитектуры, живописи, музыки</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Regressive Aspects Section -->
+    <section class="container" id="regressive">
+        <div class="section-title">
+            <h2>Регрессивные социальные явления</h2>
+        </div>
+        
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-header regressive">
+                    <i class="fas fa-brain"></i>
+                    <h3>Психологическое давление и догматизм</h3>
+                </div>
+                <div class="card-content">
+                    <p>Религиозные институты могут оказывать давление на личность и препятствовать социальному прогрессу.</p>
+                    <ul>
+                        <li>Психологическое давление на личность</li>
+                        <li>Догматизм и сопротивление новшествам</li>
+                        <li>Перенесение ответственности с человека на высшие силы</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header regressive">
+                    <i class="fas fa-person-rifle"></i>
+                    <h3>Нетерпимость и конфликты</h3>
+                </div>
+                <div class="card-content">
+                    <p>Религиозные различия могут становиться причиной нетерпимости и серьезных социальных конфликтов.</p>
+                    <ul>
+                        <li>Нетерпимость и фанатизм в вопросах веры</li>
+                        <li>Разъединение последователей различных религий</li>
+                        <li>Религиозные войны и конфликты</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="card">
+                <div class="card-header regressive">
+                    <i class="fas fa-landmark"></i>
+                    <h3>Политическое влияние</h3>
+                </div>
+                <div class="card-content">
+                    <p>В некоторых случаях религия может чрезмерно влиять на государственные институты, ограничивая светский характер государства.</p>
+                    <ul>
+                        <li>Контроль духовенства над государством</li>
+                        <li>Процессы дедифференциации религии и политики</li>
+                        <li>Ограничение светских свобод</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophers Section -->
+    <section class="container" id="philosophers">
+        <div class="section-title">
+            <h2>Философы о религии</h2>
+        </div>
+        
+        <div class="cards-container">
+            <!-- Мишель Фуко -->
+            <div class="card">
+                <div class="card-header philosopher">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Мишель Фуко</h3>
+                </div>
+                <div class="card-content">
+                    <div class="philosopher-info">
+                        <div class="philosopher-detail">
+                            <i class="fas fa-calendar"></i>
+                            <div><strong>Годы жизни:</strong> 1926-1984</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Страна:</strong> Франция</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-book"></i>
+                            <div><strong>Основные работы:</strong> "Надзирать и наказывать", "История сексуальности", "Слова и вещи"</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Основные идеи:</strong> Власть и знание, дисциплинарные институты, генеалогия</div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosopher-quote">
+                        "Иранская революция была «первой постмодернистской революцией». Хотя она и избавила Иран от монархии и привела к созданию республики, это привело не к отделению церкви от государства, а скорее к процессу дедифференциации, который поставил государство под контроль духовенства"
+                    </div>
+                    
+                    <p style="margin-top: 1rem;">Фуко анализировал религиозные институты как часть системы власти и контроля в обществе, рассматривая, как религия формирует субъективность и дисциплинирует тела.</p>
+                </div>
+            </div>
+            
+            <!-- Карл Маркс -->
+            <div class="card">
+                <div class="card-header philosopher">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Карл Маркс</h3>
+                </div>
+                <div class="card-content">
+                    <div class="philosopher-info">
+                        <div class="philosopher-detail">
+                            <i class="fas fa-calendar"></i>
+                            <div><strong>Годы жизни:</strong> 1818-1883</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Страна:</strong> Германия</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-book"></i>
+                            <div><strong>Основные работы:</strong> "Капитал", "Манифест коммунистической партии"</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Основные идеи:</strong> Исторический материализм, классовая борьба, отчуждение</div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosopher-quote">
+                        "Религия — это вздох угнетённой твари, сердце бессердечного мира, подобно тому как она — дух бездушных порядков. Религия есть опиум народа."
+                    </div>
+                    
+                    <p style="margin-top: 1rem;">Маркс рассматривал религию как социальный феномен, порожденный экономическими условиями и служащий инструментом для удержания масс в покорности.</p>
+                </div>
+            </div>
+            
+            <!-- Макс Вебер -->
+            <div class="card">
+                <div class="card-header philosopher">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Макс Вебер</h3>
+                </div>
+                <div class="card-content">
+                    <div class="philosopher-info">
+                        <div class="philosopher-detail">
+                            <i class="fas fa-calendar"></i>
+                            <div><strong>Годы жизни:</strong> 1864-1920</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Страна:</strong> Германия</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-book"></i>
+                            <div><strong>Основные работы:</strong> "Протестантская этика и дух капитализма", "Хозяйство и общество"</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Основные идеи:</strong> Рационализация, протестантская этика, типы господства</div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosopher-quote">
+                        "Протестантская аскеза, с одной стороны, создавала могущественных защитников современного трудового порядка, а с другой — придавала этому порядку, и именно в этом её специфическое влияние, ту удивительную психологическую стимуляцию, которая была необходима для его развития."
+                    </div>
+                    
+                    <p style="margin-top: 1rem;">Вебер исследовал влияние религиозных идей на экономическое поведение и социальные структуры, показав связь между протестантизмом и развитием капитализма.</p>
+                </div>
+            </div>
+            
+            <!-- Фридрих Ницше -->
+            <div class="card">
+                <div class="card-header philosopher">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Фридрих Ницше</h3>
+                </div>
+                <div class="card-content">
+                    <div class="philosopher-info">
+                        <div class="philosopher-detail">
+                            <i class="fas fa-calendar"></i>
+                            <div><strong>Годы жизни:</strong> 1844-1900</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Страна:</strong> Германия</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-book"></i>
+                            <div><strong>Основные работы:</strong> "Так говорил Заратустра", "По ту сторону добра и зла", "Генеалогия морали"</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Основные идеи:</strong> Смерть Бога, воля к власти, сверхчеловек, переоценка ценностей</div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosopher-quote">
+                        "Бог умер: и мы хотим — да свершится царство сверхчеловека!"
+                    </div>
+                    
+                    <p style="margin-top: 1rem;">Ницше критиковал христианство как религию слабых, проповедующую рабскую мораль и препятствующую развитию человеческого потенциала. Он провозгласил "смерть Бога" как культурный факт современности.</p>
+                </div>
+            </div>
+            
+            <!-- Зигмунд Фрейд -->
+            <div class="card">
+                <div class="card-header philosopher">
+                    <i class="fas fa-user-md"></i>
+                    <h3>Зигмунд Фрейд</h3>
+                </div>
+                <div class="card-content">
+                    <div class="philosopher-info">
+                        <div class="philosopher-detail">
+                            <i class="fas fa-calendar"></i>
+                            <div><strong>Годы жизни:</strong> 1856-1939</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Страна:</strong> Австрия</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-book"></i>
+                            <div><strong>Основные работы:</strong> "Тотем и табу", "Будущее одной иллюзии", "Моисей и монотеизм"</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Основные идеи:</strong> Бессознательное, психоанализ, Эдипов комплекс, сублимация</div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosopher-quote">
+                        "Религия — это универсальный навязчивый невроз человечества."
+                    </div>
+                    
+                    <p style="margin-top: 1rem;">Фрейд рассматривал религию как иллюзию, возникающую из детских потребностей в защите от страха смерти и беспомощности перед силами природы. Он видел в религии коллективный невроз.</p>
+                </div>
+            </div>
+            
+            <!-- Людвиг Фейербах -->
+            <div class="card">
+                <div class="card-header philosopher">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Людвиг Фейербах</h3>
+                </div>
+                <div class="card-content">
+                    <div class="philosopher-info">
+                        <div class="philosopher-detail">
+                            <i class="fas fa-calendar"></i>
+                            <div><strong>Годы жизни:</strong> 1804-1872</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div><strong>Страна:</strong> Германия</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-book"></i>
+                            <div><strong>Основные работы:</strong> "Сущность христианства"</div>
+                        </div>
+                        <div class="philosopher-detail">
+                            <i class="fas fa-lightbulb"></i>
+                            <div><strong>Основные идеи:</strong> Антропологическая сущность религии, проекция человеческих качеств на Бога</div>
+                        </div>
+                    </div>
+                    
+                    <div class="philosopher-quote">
+                        "Тайна теологии есть антропология."
+                    </div>
+                    
+                    <p style="margin-top: 1rem;">Фейербах утверждал, что Бог — это проекция человеческой сущности, идеализированный образ человека. Религия, по его мнению, отчуждает человека от его собственной природы, приписывая лучшие человеческие качества божеству.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="container">
+        <div class="quote-section">
+            <blockquote>
+                "Иранская революция была «первой постмодернистской революцией». Хотя она и избавила Иран от монархии и привела к созданию республики, это привело не к отделению церкви от государства, а скорее к процессу дедифференциации, который поставил государство под контроль духовенства"
+            </blockquote>
+            <div class="quote-author">— Мишель Фуко, французский философ</div>
+        </div>
+    </section>
+
+    <!-- Historical Context Section -->
+    <section class="container" id="history">
+        <div class="section-title">
+            <h2>Исторический контекст</h2>
+        </div>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">Средние века</div>
+                    <p>Развитие религиозных образовательных институтов: церковные школы, университеты, медресе. Религия как основной источник образования и культуры.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">XIII-XVI вв.</div>
+                    <p>Период религиозных войн и инквизиции. Крайние формы религиозного фанатизма, преследование инакомыслящих.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">XVII-XVIII вв.</div>
+                    <p>Эпоха Просвещения: начало отделения церкви от государства, развитие светской философии и науки.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">XIX век</div>
+                    <p>Развитие философии религии: работы Фейербаха, Маркса, Ницше, критикующих религию с антропологических, социальных и психологических позиций.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">1979 г.</div>
+                    <p>Иранская революция — пример процесса дедифференциации религии и государства, когда духовенство получило контроль над политическими институтами.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-dot"></div>
+                <div class="timeline-content">
+                    <div class="timeline-year">XXI век</div>
+                    <p>Современные вызовы: взаимодействие религиозных и светских институтов, поиск баланса между свободой вероисповедания и светским характером государства.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">Философия религии</div>
+            <p class="footer-description">Исследование социальных аспектов религии в историческом и современном контексте. Анализ прогрессивных и регрессивных явлений, связанных с религиозными институтами.</p>
+            
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2025 Философия религии. Все права защищены. Userov.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mainNav = document.getElementById('mainNav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mainNav.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mainNav.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+        
+        // Close mobile menu when clicking a link
+        const navLinks = document.querySelectorAll('nav a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (mainNav.classList.contains('active')) {
+                    mainNav.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+        
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            observer.observe(card);
+        });
+        
+        // Observe timeline items
+        const timelineItems = document.querySelectorAll('.timeline-item');
+        timelineItems.forEach(item => {
+            observer.observe(item);
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
